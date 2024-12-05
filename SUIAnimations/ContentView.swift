@@ -34,8 +34,26 @@ struct ContentView: View {
                 .shadow(color: .black.opacity(0.1), radius: 5, x: 5, y: 5)
         }
         .onAppear {
-            withAnimation(.linear(duration: 1.5)) {
-                isAnimating = true
+//            Timer.publish(every: 2, on: .main, in: .common).autoconnect() {
+//                
+//            }
+//            isAnimating = true
+            
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2, execute: {
+//                isAnimating = false
+//            })
+            Timer.scheduledTimer(withTimeInterval: 0.9, repeats: true) { t in
+                withAnimation(.linear(duration: 0.4)) {
+                    isAnimating = false
+                }
+                
+                withAnimation(.linear(duration: 0.9)) {
+                    isAnimating = true
+                }
+                
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2, execute: {
+//                    isAnimating = false
+//                })
             }
         }
         .frame(width: 80, height: 80)
