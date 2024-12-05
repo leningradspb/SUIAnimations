@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isAnimating = false
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+//            .golf
+//            .clipShape(RoundedRectangle(cornerRadius: 100))
+//            .overlay(RoundedRectangle(cornerRadius: 100).stroke(.red, lineWidth: 2))
+            Image(systemName: "suit.heart.fill").font(.system(size: 100))
+                .symbolEffect(.bounce, options: isAnimating ? .repeating.speed(1) : .default , value: isAnimating)
         }
         .padding()
+        .onAppear {
+            isAnimating = true
+        }
     }
 }
 
